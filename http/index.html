@@ -2,38 +2,32 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Twitter followers tool</title>
+    <title>Wikipedia Image Search</title>
     <meta http-equiv="cleartype" content="on">
     <link rel="stylesheet" href="//x.scraperwiki.com/vendor/style/bootstrap.min.css">
     <link rel="stylesheet" href="//x.scraperwiki.com/style/scraperwiki.css">
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
     <script src="//x.scraperwiki.com/vendor/js/bootstrap.min.js"></script>
     <script src="//x.scraperwiki.com/js/scraperwiki.js"></script>
-    <script type="text/javascript">
+    <script>
       $(function() {
-          var success = function(jq) {
+          var execSuccess = function(execOutput) {
             var datasetUrl = "/dataset/" + scraperwiki.box
             scraperwiki.tool.redirect(datasetUrl)
           }
-
           $('#submit').on('click', function() {
+            $(this).addClass('loading').html('Loading&hellip;')
             term = $('#q').val()
-            scraperwiki.exec("tool/search.py '" + term + "'", success)
-            })
+            scraperwiki.exec("tool/search.py '" + term + "'", execSuccess)
+          })
       })
     </script>
   </head>
   <body>
-
-    <div>
-      <h1>Search wikipedia images</h1>
-
-      <div class="input-append">
-        <input type="text" name="q" size="80" id="q" placeholder="cats">
-        <button class="btn btn-primary" type="button" id="submit"></button>
-      </div>
+    <h1>Search Wikipedia Images</h1>
+    <div class="input-append">
+      <input type="text" name="q" size="80" id="q" placeholder="Search term, eg: cats">
+      <button class="btn btn-primary" type="submit" id="submit">Search</button>
     </div>
-
   </body>
 </html>
