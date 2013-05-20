@@ -16,7 +16,7 @@
             scraperwiki.tool.redirect(datasetUrl)
           }
           $('#submit').on('click', function() {
-            $(this).addClass('loading').html('Loading&hellip;')
+            $(this).addClass('loading').html('Searching&hellip;')
             term = $('#q').val()
             scraperwiki.exec("tool/search.py '" + term + "'", execSuccess)
           })
